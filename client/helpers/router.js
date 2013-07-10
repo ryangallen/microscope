@@ -9,6 +9,8 @@ Meteor.Router.add({
 Meteor.Router.filters({
 	'requireLogin': function(page){
 		if (Meteor.user())
+			return page;
+		else if (Meteor.loggingIn())
 			return 'loading';
 		else
 			return 'accessDenied';
